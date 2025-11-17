@@ -1,3 +1,4 @@
+local vim = vim -- suppress lsp warnings
 local keymap = vim.keymap
 
 vim.lsp.enable({
@@ -11,10 +12,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-
-    if client:supports_method('textDocument/implementation') then
-      -- Create a keymap for vim.lsp.buf.implementation ...
-    end
 
     -- Enable auto-completion.
     if client:supports_method('textDocument/completion') then
