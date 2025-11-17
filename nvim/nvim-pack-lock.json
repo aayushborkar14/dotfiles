@@ -8,6 +8,14 @@
       "rev": "3946f0122255bc377d14a59b27b609fb3ab25768",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
+    "mini.pairs": {
+      "rev": "b316e68f2d242d5bd010deaab645daa27ed86297",
+      "src": "https://github.com/nvim-mini/mini.pairs"
+    },
+    "mini.surround": {
+      "rev": "88c52297ed3e69ecf9f8652837888ecc727a28ee",
+      "src": "https://github.com/nvim-mini/mini.surround"
+    },
     "nvim-lspconfig": {
       "rev": "dc7e7c7699cc01b1b6fefa97f9b496d8f447d7a1",
       "src": "https://github.com/neovim/nvim-lspconfig"

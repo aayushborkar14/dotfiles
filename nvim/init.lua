@@ -86,7 +86,9 @@ vim.pack.add({
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/akinsho/bufferline.nvim",
   "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/linux-cultist/venv-selector.nvim"
+  "https://github.com/linux-cultist/venv-selector.nvim",
+  "https://github.com/nvim-mini/mini.pairs",
+  "https://github.com/nvim-mini/mini.surround"
 })
 
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
@@ -118,3 +120,5 @@ require("venv-selector").setup({
   default = "venv",
 })
 keymap.set("n", "<leader>cv", "<cmd>VenvSelect<CR>", opts)
+require("mini.pairs").setup()
+require("mini.surround").setup()

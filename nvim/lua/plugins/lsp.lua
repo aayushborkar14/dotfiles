@@ -5,6 +5,18 @@ vim.lsp.enable({
   "pyright", -- npm i -g pyright
   "copilot", -- npm i -g @github/copilot-language-server
   "lua_ls",
+  "ruff",    -- uv tool install ruff@latest
+  "clangd",  -- sudo apt install clangd-18
+})
+
+-- Set indent to 4 for C/C++/Makefile
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'cpp', 'make' },
+  callback = function()
+    vim.bo.shiftwidth = 4
+    vim.bo.tabstop = 4
+    vim.bo.softtabstop = 4
+  end,
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
