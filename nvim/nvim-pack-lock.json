@@ -1,0 +1,12 @@
+{
+  "plugins": {
+    "neovim": {
+      "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
+      "src": "https://github.com/rose-pine/neovim"
+    },
+    "nvim-lspconfig": {
+      "rev": "dc7e7c7699cc01b1b6fefa97f9b496d8f447d7a1",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    }
+  }
+}
