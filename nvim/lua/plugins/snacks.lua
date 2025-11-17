@@ -1,5 +1,5 @@
 local vim = vim
-vim.pack.add({"https://github.com/folke/snacks.nvim"})
+vim.pack.add({ "https://github.com/folke/snacks.nvim" })
 require("snacks").setup()
 
 -- Top Pickers & Explorer
@@ -12,7 +12,8 @@ vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "Fil
 
 -- Find
 vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
-vim.keymap.set("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
+vim.keymap.set("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
+  { desc = "Find Config File" })
 vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
 vim.keymap.set("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
@@ -29,7 +30,8 @@ vim.keymap.set("n", "<leader>gf", function() Snacks.picker.git_log_file() end, {
 
 -- GitHub
 vim.keymap.set("n", "<leader>gi", function() Snacks.picker.gh_issue() end, { desc = "GitHub Issues (open)" })
-vim.keymap.set("n", "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, { desc = "GitHub Issues (all)" })
+vim.keymap.set("n", "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end,
+  { desc = "GitHub Issues (all)" })
 vim.keymap.set("n", "<leader>gp", function() Snacks.picker.gh_pr() end, { desc = "GitHub PRs (open)" })
 vim.keymap.set("n", "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, { desc = "GitHub PRs (all)" })
 
@@ -37,7 +39,8 @@ vim.keymap.set("n", "<leader>gP", function() Snacks.picker.gh_pr({ state = "all"
 vim.keymap.set("n", "<leader>sb", function() Snacks.picker.lines() end, { desc = "Buffer Lines" })
 vim.keymap.set("n", "<leader>sB", function() Snacks.picker.grep_buffers() end, { desc = "Grep Open Buffers" })
 vim.keymap.set("n", "<leader>sg", function() Snacks.picker.grep() end, { desc = "Grep" })
-vim.keymap.set({ "n", "x" }, "<leader>sw", function() Snacks.picker.grep_word() end, { desc = "Visual selection or word" })
+vim.keymap.set({ "n", "x" }, "<leader>sw", function() Snacks.picker.grep_word() end,
+  { desc = "Visual selection or word" })
 
 -- Search
 vim.keymap.set("n", '<leader>s"', function() Snacks.picker.registers() end, { desc = "Registers" })
@@ -71,7 +74,8 @@ vim.keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, {
 vim.keymap.set("n", "gai", function() Snacks.picker.lsp_incoming_calls() end, { desc = "Incoming Calls" })
 vim.keymap.set("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "Outgoing Calls" })
 vim.keymap.set("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
-vim.keymap.set("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
+vim.keymap.set("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end,
+  { desc = "LSP Workspace Symbols" })
 
 -- Other
 vim.keymap.set("n", "<leader>z", function() Snacks.zen() end, { desc = "Toggle Zen Mode" })
@@ -104,4 +108,3 @@ vim.keymap.set("n", "<leader>N", function()
     },
   })
 end, { desc = "Neovim News" })
-

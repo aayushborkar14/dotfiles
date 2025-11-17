@@ -16,6 +16,7 @@ o.number = true
 o.relativenumber = true
 o.cmdheight = 0
 o.signcolumn = "yes"
+o.laststatus = 3
 o.winborder = "rounded"
 o.undofile = true
 o.ignorecase = true
@@ -23,17 +24,17 @@ o.smartcase = true
 o.swapfile = false
 o.foldmethod = "indent"
 o.foldlevelstart = 99
+o.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.clipboard:append("unnamedplus")
-vim.opt.termguicolors = true
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
 -- Save file
 keymap.set('n', '<C-s>', '<cmd>w<CR>', opts)
-keymap.set('i', '<C-s>', '<Esc><cmd>w<CR>a', opts)
+keymap.set('i', '<C-s>', '<Esc><cmd>w<CR>', opts)
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
@@ -79,48 +80,36 @@ keymap.set("n", "<C-j>", function()
   vim.diagnostic.goto_next()
 end, opts)
 
-local augroup = vim.api.nvim_create_augroup("this.cfg", { clear = true })
-local autocmd = vim.api.nvim_create_autocmd
-local map = vim.keymap.set
-
-local function setup_lsp()
-	vim.lsp.enable({
-		"pyright", -- npm i -g pyright
-	})
-
-	autocmd("LspAttach", {
-		group = augroup,
-		callback = function(ev)
-			local bufopts = { noremap = true, silent = true, buffer = ev.buf }
-			map("n", "grd", vim.lsp.buf.definition, bufopts)
-			map("i", "<C-k>", vim.lsp.completion.get, bufopts) -- open completion menu manually
-			local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-			local methods = vim.lsp.protocol.Methods
-			if client:supports_method(methods.textDocument_completion) then
-				vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-			end
-		end,
-	})
-end
-
 vim.pack.add({
-	"https://github.com/rose-pine/neovim",
+  { src = "https://github.com/rose-pine/neovim", name = "rose-pine" },
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/akinsho/bufferline.nvim",
+  "https://github.com/neovim/nvim-lspconfig",
 })
 
+require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
+require("plugins.lsp")
 require("rose-pine").setup({ styles = { transparency = true } })
 vim.cmd("colorscheme rose-pine")
-require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
-setup_lsp()
 require("plugins.snacks")
-require("lualine").setup()
+require("lualine").setup({
+  sections = {
+    lualine_z = {
+      function()
+        return " " .. os.date("%R")
+      end,
+    },
+  }
+})
 require("bufferline").setup({
   options = {
     always_show_bufferline = false,
     offsets = {
-      { filetype = "snacks_layout_box" },
-    }
-  } 
+      {
+        filetype = "snacks_layout_box",
+        separator = true,
+      },
+    },
+  }
 })
