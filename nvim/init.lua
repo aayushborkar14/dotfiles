@@ -23,9 +23,15 @@ o.smartcase = true
 o.swapfile = false
 o.foldmethod = "indent"
 o.foldlevelstart = 99
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
+
+-- Save file
+keymap.set('n', '<C-s>', '<cmd>w<CR>', opts)
+keymap.set('i', '<C-s>', '<Esc><cmd>w<CR>a', opts)
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
@@ -92,10 +98,11 @@ end
 
 vim.pack.add({
 	"https://github.com/rose-pine/neovim",
-	"https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/folke/snacks.nvim",
 })
 
 require("rose-pine").setup({ styles = { transparency = true } })
 vim.cmd("colorscheme rose-pine")
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
 setup_lsp()
+require("snacks_config")
