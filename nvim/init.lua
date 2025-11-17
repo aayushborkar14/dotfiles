@@ -25,6 +25,7 @@ o.foldmethod = "indent"
 o.foldlevelstart = 99
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.opt.clipboard:append("unnamedplus")
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
@@ -99,10 +100,13 @@ end
 vim.pack.add({
 	"https://github.com/rose-pine/neovim",
   "https://github.com/folke/snacks.nvim",
+  "https://github.com/nvim-lualine/lualine.nvim",
+  "https://github.com/nvim-tree/nvim-web-devicons",
 })
 
 require("rose-pine").setup({ styles = { transparency = true } })
 vim.cmd("colorscheme rose-pine")
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
 setup_lsp()
-require("snacks_config")
+require("plugins.snacks")
+require("lualine").setup()
