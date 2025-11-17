@@ -26,6 +26,7 @@ o.foldlevelstart = 99
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.clipboard:append("unnamedplus")
+vim.opt.termguicolors = true
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
@@ -51,6 +52,11 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 keymap.set("n", "te", ":tabedit", opts)
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+
+-- Buffers
+keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", opts)
+keymap.set("n", "H", "<cmd>bprevious<CR>", opts)
+keymap.set("n", "L", "<cmd>bnext<CR>", opts)
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
@@ -99,9 +105,9 @@ end
 
 vim.pack.add({
 	"https://github.com/rose-pine/neovim",
-  "https://github.com/folke/snacks.nvim",
-  "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
+  "https://github.com/nvim-lualine/lualine.nvim",
+  "https://github.com/akinsho/bufferline.nvim",
 })
 
 require("rose-pine").setup({ styles = { transparency = true } })
@@ -110,3 +116,11 @@ require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
 setup_lsp()
 require("plugins.snacks")
 require("lualine").setup()
+require("bufferline").setup({
+  options = {
+    always_show_bufferline = false,
+    offsets = {
+      { filetype = "snacks_layout_box" },
+    }
+  } 
+})

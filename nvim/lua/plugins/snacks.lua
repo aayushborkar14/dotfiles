@@ -1,4 +1,5 @@
 local vim = vim
+vim.pack.add({"https://github.com/folke/snacks.nvim"})
 require("snacks").setup()
 
 -- Top Pickers & Explorer
