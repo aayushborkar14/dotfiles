@@ -8,6 +8,8 @@ o.wrap = false
 o.autoread = true
 o.shell = "fish"
 o.wildmode = { "lastused", "full" }
+o.autocomplete = true
+o.completeopt = { "menu", "noinsert" }
 o.pumheight = 5
 o.number = true
 o.relativenumber = true
@@ -85,7 +87,8 @@ vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/linux-cultist/venv-selector.nvim",
   "https://github.com/nvim-mini/mini.pairs",
-  "https://github.com/nvim-mini/mini.surround"
+  "https://github.com/nvim-mini/mini.surround",
+  "https://github.com/xeluxee/competitest.nvim"
 })
 
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
@@ -119,3 +122,4 @@ require("venv-selector").setup({
 keymap.set("n", "<leader>cv", "<cmd>VenvSelect<CR>", opts)
 require("mini.pairs").setup()
 require("mini.surround").setup()
+require("competitest").setup()
