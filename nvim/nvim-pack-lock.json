@@ -20,6 +20,10 @@
       "rev": "88c52297ed3e69ecf9f8652837888ecc727a28ee",
       "src": "https://github.com/nvim-mini/mini.surround"
     },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
     "nvim-lspconfig": {
       "rev": "dc7e7c7699cc01b1b6fefa97f9b496d8f447d7a1",
       "src": "https://github.com/neovim/nvim-lspconfig"
