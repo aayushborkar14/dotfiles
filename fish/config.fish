@@ -2,17 +2,22 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-zoxide init fish | source
-alias cd="z"
-starship init fish | source
+zoxide init fish --cmd cd | source
 
-set fish_greeting
-# function fish_greeting
-#     pokemon-colorscripts --no-title -n kyogre
-# end
+alias x clear
+alias v nvim
 
-bind \cs __ethp_commandline_toggle_sudo
-abbr -a .. cd ../
-abbr -a ... cd ../../
-abbr -a .... cd ../../../
-abbr -a ..... cd ../../../../
+alias .. "cd .."
+alias ... "cd ../.."
+alias .... "cd ../../.."
+alias ..... "cd ../../../.."
+
+alias l eza
+alias ls "eza --icons=always --hyperlink"
+alias ll "eza --group --header --group-directories-first --long --hyperlink"
+alias lg "eza --group --header --group-directories-first --long --git --git-ignore --hyperlink"
+alias le "eza --group --header --group-directories-first --long --extended --hyperlink"
+alias lt "eza --group --header --group-directories-first --tree --level 3 --hyperlink"
+
+alias ipy "uv run ipython"
+alias ipython "uv run ipython"
