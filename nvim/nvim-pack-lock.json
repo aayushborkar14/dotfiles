@@ -55,6 +55,10 @@
     "venv-selector.nvim": {
       "rev": "58bae72c84b9f7f864c879ec1896e384296f9ffb",
       "src": "https://github.com/linux-cultist/venv-selector.nvim"
+    },
+    "vim-cool": {
+      "rev": "9ea940c0d537e55de0de4c0298c04b976960fb12",
+      "src": "https://github.com/romainl/vim-cool"
     }
   }
 }

@@ -87,7 +87,8 @@ vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/linux-cultist/venv-selector.nvim",
   "https://github.com/nvim-mini/mini.pairs",
-  "https://github.com/nvim-mini/mini.surround"
+  "https://github.com/nvim-mini/mini.surround",
+  "https://github.com/romainl/vim-cool"
 })
 
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
