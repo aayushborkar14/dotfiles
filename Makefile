@@ -5,7 +5,8 @@ SYMLINKS = \
     $(CONFIG)/fish \
     $(CONFIG)/kitty \
     $(CONFIG)/nvim \
-	$(HOME)/.clang-format
+	$(HOME)/.clang-format \
+	$(HOME)/Brewfile
 
 all: link
 
@@ -22,6 +23,9 @@ $(CONFIG)/nvim:
 
 $(HOME)/.clang-format:
 	ln -s $(DOTFILES)/.clang-format $@
+
+$(HOME)/Brewfile:
+	ln -s $(DOTFILES)/Brewfile $@
 
 clean:
 	@echo "Removing dotfile symlinks..."

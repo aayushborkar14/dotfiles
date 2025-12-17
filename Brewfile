@@ -1,0 +1,30 @@
+# Develop
+brew "lazygit"
+brew "uv"
+brew "node"
+brew "lua-language-server"
+
+# System
+brew "btop"
+brew "fish"
+brew "ripgrep"
+brew "bat"
+brew "fd"
+brew "fish"
+brew "ffmpeg"
+brew "fzf"
+brew "eza"
+brew "wget"
+brew "zoxide"
+
+cask "mos"
+cask "bitwarden"
+cask "kitty"
+cask "microsoft-word"
+cask "microsoft-powerpoint"
+cask "microsoft-excel"
+cask "visual-studio-code"
+cask "spotify"
+cask "zoom"
+cask "discord"
+

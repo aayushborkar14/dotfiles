@@ -3,6 +3,7 @@ if status is-interactive
 end
 
 zoxide init fish --cmd cd | source
+eval (try init ~/src/tries | string collect)
 
 alias x clear
 alias v nvim
