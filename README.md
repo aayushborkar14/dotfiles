@@ -1,3 +1,3 @@
 # dotfiles
 
-My configuration files for fish, kitty and nvim.
+My configuration files for clang-format, fish, homebrew, kitty, nvim.
