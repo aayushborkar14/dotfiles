@@ -125,6 +125,8 @@ require("venv-selector").setup({
 })
 keymap.set("n", "<leader>cv", "<cmd>VenvSelect<CR>", opts)
 require("mini.pairs").setup()
-require("mini.surround").setup()
+require("mini.surround").setup({
+  mappings = { highlight = "" }
+})
 require("plugins.competitest")
 require("plugins.dap")

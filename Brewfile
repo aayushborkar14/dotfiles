@@ -2,6 +2,7 @@
 brew "lazygit"
 brew "lua-language-server"
 brew "node"
+brew "opencode"
 brew "uv"
 
 # System
