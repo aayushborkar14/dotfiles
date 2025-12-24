@@ -59,6 +59,10 @@
     "vim-cool": {
       "rev": "9ea940c0d537e55de0de4c0298c04b976960fb12",
       "src": "https://github.com/romainl/vim-cool"
+    },
+    "vimtex": {
+      "rev": "f5c37462c690da9a0d05cd12a7b9595b10b56200",
+      "src": "https://github.com/lervag/vimtex"
     }
   }
 }
