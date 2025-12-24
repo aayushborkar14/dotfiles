@@ -5,6 +5,13 @@ end
 zoxide init fish --cmd cd | source
 eval (try init ~/src/tries | string collect)
 
+# if kitty, use printf '\033c' to clear the screen
+if test "$TERM" = "xterm-kitty"
+    function clear
+        printf '\033c'
+    end
+end
+
 alias x clear
 alias v nvim
 
