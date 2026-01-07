@@ -6,6 +6,8 @@ o.softtabstop = 2
 o.expandtab = true
 o.wrap = false
 o.autoread = true
+o.cursorline = true
+o.smoothscroll = true
 o.shell = "fish"
 o.wildmode = { "lastused", "full" }
 o.autocomplete = true
@@ -25,7 +27,7 @@ o.foldmethod = "indent"
 o.foldlevelstart = 99
 o.termguicolors = true
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = "\\"
 vim.opt.clipboard:append("unnamedplus")
 
 -- Keymaps
@@ -80,6 +82,11 @@ keymap.set("n", "<C-w><down>", "C-w>-")
 keymap.set("n", "<C-j>", function()
   vim.diagnostic.goto_next()
 end, opts)
+
+-- Stop search and clear highlighting on escape
+keymap.set("i", "<Esc>", "<cmd>noh<CR><Esc>", opts)
+keymap.set("n", "<Esc>", "<cmd>noh<CR><Esc>", opts)
+keymap.set("s", "<Esc>", "<cmd>noh<CR><Esc>", opts)
 
 -- Auto commands
 
@@ -142,7 +149,6 @@ vim.pack.add({
   "https://github.com/linux-cultist/venv-selector.nvim",
   "https://github.com/nvim-mini/mini.pairs",
   "https://github.com/nvim-mini/mini.surround",
-  "https://github.com/romainl/vim-cool",
   "https://github.com/lervag/vimtex"
 })
 
