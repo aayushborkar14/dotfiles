@@ -1,5 +1,7 @@
 vim.pack.add({ "https://github.com/folke/snacks.nvim" })
-require("snacks").setup()
+require("snacks").setup({
+  scroll = { enabled = true },
+})
 
 -- Top Pickers & Explorer
 vim.keymap.set("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "Smart Find Files" })
