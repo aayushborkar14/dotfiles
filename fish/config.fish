@@ -29,3 +29,5 @@ alias lt "eza --group --header --group-directories-first --tree --level 3 --hype
 
 alias ipy "uv run ipython"
 alias ipython "uv run ipython"
+
+alias s "kitten ssh"
