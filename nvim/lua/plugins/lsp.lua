@@ -45,13 +45,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Auto-format ("lint") on save.
     if not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then
+      -- Enable autoformat by default
+      vim.b[args.buf].autoformat = true
+
       vim.api.nvim_create_autocmd('BufWritePre', {
         group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
         buffer = args.buf,
         callback = function()
-          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+          if vim.b[args.buf].autoformat then
+            vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+          end
         end,
       })
+
+      -- Keybind to toggle autoformat
+      keymap.set("n", "<leader>uf", function()
+        vim.b[args.buf].autoformat = not vim.b[args.buf].autoformat
+        local status = vim.b[args.buf].autoformat and "enabled" or "disabled"
+        print("Autoformat " .. status)
+      end, { buffer = args.buf, desc = "Toggle autoformat" })
     end
   end,
 })
