@@ -141,7 +141,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- Plugins
 
 vim.pack.add({
-  { src = "https://github.com/rose-pine/neovim", name = "rose-pine" },
+  { src = "https://github.com/rose-pine/neovim",       name = "rose-pine" },
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/akinsho/bufferline.nvim",
@@ -149,11 +149,15 @@ vim.pack.add({
   "https://github.com/linux-cultist/venv-selector.nvim",
   "https://github.com/nvim-mini/mini.pairs",
   "https://github.com/nvim-mini/mini.surround",
-  "https://github.com/lervag/vimtex"
+  "https://github.com/lervag/vimtex",
+  "https://github.com/copilotlsp-nvim/copilot-lsp",
+  { src = "https://github.com/zbirenbaum/copilot.lua", name = "copilot" }
 })
 
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
 require("plugins.lsp")
+require("copilot-lsp").setup({})
+require("copilot").setup({})
 require("rose-pine").setup({ styles = { transparency = true } })
 vim.cmd("colorscheme rose-pine")
 require("plugins.snacks")

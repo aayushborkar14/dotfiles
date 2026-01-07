@@ -3,7 +3,6 @@ local keymap = vim.keymap
 
 vim.lsp.enable({
   "pyright", -- npm i -g pyright
-  "copilot", -- npm i -g @github/copilot-language-server
   "lua_ls",
   "ruff",    -- uv tool install ruff@latest
   "clangd",  -- sudo apt install clangd-18
