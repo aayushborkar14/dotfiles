@@ -1,42 +1,26 @@
-DOTFILES := $(HOME)/dotfiles
-CONFIG   := $(HOME)/.config
+STOW     := stow
+PACKAGES := fish kitty nvim clang brew
 
-SYMLINKS = \
-    $(CONFIG)/fish \
-    $(CONFIG)/kitty \
-    $(CONFIG)/nvim \
-	$(HOME)/.clang-format \
-	$(HOME)/Brewfile
+.DEFAULT_GOAL := all
 
 all: link
 
-link: $(SYMLINKS)
+link:
+	$(STOW) $(PACKAGES)
 
-$(CONFIG)/fish:
-	ln -s $(DOTFILES)/fish $@
+unlink:
+	$(STOW) -D $(PACKAGES)
 
-$(CONFIG)/kitty:
-	ln -s $(DOTFILES)/kitty $@
+restow:
+	$(STOW) -R $(PACKAGES)
 
-$(CONFIG)/nvim:
-	ln -s $(DOTFILES)/nvim $@
+adopt:
+	$(STOW) --adopt $(PACKAGES)
 
-$(HOME)/.clang-format:
-	ln -s $(DOTFILES)/.clang-format $@
+status:
+	$(STOW) -n $(PACKAGES)
 
-$(HOME)/Brewfile:
-	ln -s $(DOTFILES)/Brewfile $@
+clean: unlink
 
-clean:
-	@echo "Removing dotfile symlinks..."
-	@for link in $(SYMLINKS); do \
-	    if [ -L $$link ]; then \
-	        echo "Removing $$link"; \
-	        rm $$link; \
-	    else \
-	        echo "Skipping $$link (not a symlink)"; \
-	    fi; \
-	done
-
-.PHONY: all link clean
+.PHONY: all link unlink restow adopt status clean
 

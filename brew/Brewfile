@@ -15,6 +15,7 @@ brew "ffmpeg"
 brew "fish"
 brew "fzf"
 brew "ripgrep"
+brew "stow"
 brew "wget"
 brew "zoxide"
 
