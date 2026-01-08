@@ -29,7 +29,6 @@ if status is-interactive
   alias lt "eza --group --header --group-directories-first --tree --level 3 --hyperlink"
 end
 
-alias ipy "uv run ipython"
-alias ipython "uv run ipython"
+alias ipy ipython
 
 alias s "kitten ssh"
