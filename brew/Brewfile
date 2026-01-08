@@ -25,5 +25,6 @@ cask "kitty"
 cask "mos"
 cask "spotify"
 cask "visual-studio-code"
+cask "wireshark-app"
 cask "zoom"
 
