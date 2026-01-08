@@ -20,12 +20,14 @@ alias ... "cd ../.."
 alias .... "cd ../../.."
 alias ..... "cd ../../../.."
 
-alias l eza
-alias ls "eza --icons=always --hyperlink"
-alias ll "eza --group --header --group-directories-first --long --hyperlink"
-alias lg "eza --group --header --group-directories-first --long --git --git-ignore --hyperlink"
-alias le "eza --group --header --group-directories-first --long --extended --hyperlink"
-alias lt "eza --group --header --group-directories-first --tree --level 3 --hyperlink"
+if status is-interactive
+  alias l eza
+  alias ls "eza --icons=always --hyperlink"
+  alias ll "eza --group --header --group-directories-first --long --hyperlink"
+  alias lg "eza --group --header --group-directories-first --long --git --git-ignore --hyperlink"
+  alias le "eza --group --header --group-directories-first --long --extended --hyperlink"
+  alias lt "eza --group --header --group-directories-first --tree --level 3 --hyperlink"
+end
 
 alias ipy "uv run ipython"
 alias ipython "uv run ipython"
