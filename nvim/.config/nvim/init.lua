@@ -30,6 +30,42 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.clipboard:append("unnamedplus")
 
+-- User Commands
+
+-- Create a new buffer and run shell command
+vim.api.nvim_create_user_command("ShellOut", function(opts)
+  local cmd = table.concat(opts.fargs, " ")
+
+  -- create and switch to a new buffer
+  vim.cmd("enew")
+  local buf = vim.api.nvim_get_current_buf()
+
+  -- buffer options
+  vim.bo[buf].buftype = "nofile"
+  vim.bo[buf].swapfile = false
+
+  -- set buffer name
+  vim.api.nvim_buf_set_name(buf, "[shell] " .. cmd)
+
+  -- start async job
+  vim.fn.jobstart(cmd, {
+    stdout_buffered = true,
+    stderr_buffered = true,
+
+    on_stdout = function(_, data)
+      if data and #data > 0 then
+        vim.api.nvim_buf_set_lines(buf, -1, -1, false, data)
+      end
+    end,
+
+    on_stderr = function(_, data)
+      if data and #data > 0 then
+        vim.api.nvim_buf_set_lines(buf, -1, -1, false, data)
+      end
+    end,
+  })
+end, { nargs = "+" })
+
 -- Keymaps
 
 local keymap = vim.keymap
