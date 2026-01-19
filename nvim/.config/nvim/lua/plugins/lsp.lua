@@ -2,10 +2,11 @@ local vim = vim -- suppress lsp warnings
 local keymap = vim.keymap
 
 vim.lsp.enable({
-  "pyright", -- npm i -g pyright
-  "lua_ls",
-  "ruff",    -- uv tool install ruff@latest
   "clangd",  -- sudo apt install clangd-18
+  "jdtls",   -- brew install jdtls
+  "lua_ls",  -- brew install lua-language-server
+  "pyright", -- npm i -g pyright
+  "ruff",    -- uv tool install ruff@latest
 })
 
 -- Set indent to 4 for C/C++/Makefile

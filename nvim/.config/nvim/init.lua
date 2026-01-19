@@ -191,7 +191,8 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.surround",
   "https://github.com/lervag/vimtex",
   "https://github.com/copilotlsp-nvim/copilot-lsp",
-  { src = "https://github.com/zbirenbaum/copilot.lua", name = "copilot" }
+  { src = "https://github.com/zbirenbaum/copilot.lua", name = "copilot" },
+  "https://codeberg.org/mfussenegger/nvim-jdtls"
 })
 
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
