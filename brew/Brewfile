@@ -1,4 +1,5 @@
 # Develop
+brew "jdtls"
 brew "lazygit"
 brew "lua-language-server"
 brew "node"
@@ -14,6 +15,7 @@ brew "fd"
 brew "ffmpeg"
 brew "fish"
 brew "fzf"
+brew "ncspot"
 brew "ripgrep"
 brew "stow"
 brew "wget"
