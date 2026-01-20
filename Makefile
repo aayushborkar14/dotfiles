@@ -1,5 +1,5 @@
 STOW     := stow
-PACKAGES := fish kitty nvim clang brew
+PACKAGES := fish kitty nvim brew
 
 .DEFAULT_GOAL := all
 

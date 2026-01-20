@@ -9,16 +9,6 @@ vim.lsp.enable({
   "ruff",    -- uv tool install ruff@latest
 })
 
--- Set indent to 4 for C/C++/Makefile
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'c', 'cpp', 'make' },
-  callback = function()
-    vim.bo.shiftwidth = 4
-    vim.bo.tabstop = 4
-    vim.bo.softtabstop = 4
-  end,
-})
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(args)
