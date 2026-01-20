@@ -38,36 +38,36 @@ vim.opt.clipboard:append("unnamedplus")
 
 -- Create a new buffer and run shell command
 vim.api.nvim_create_user_command("ShellOut", function(opts)
-	local cmd = table.concat(opts.fargs, " ")
+  local cmd = table.concat(opts.fargs, " ")
 
-	-- create and switch to a new buffer
-	vim.cmd("enew")
-	local buf = vim.api.nvim_get_current_buf()
+  -- create and switch to a new buffer
+  vim.cmd("enew")
+  local buf = vim.api.nvim_get_current_buf()
 
-	-- buffer options
-	vim.bo[buf].buftype = "nofile"
-	vim.bo[buf].swapfile = false
+  -- buffer options
+  vim.bo[buf].buftype = "nofile"
+  vim.bo[buf].swapfile = false
 
-	-- set buffer name
-	vim.api.nvim_buf_set_name(buf, "[shell] " .. cmd)
+  -- set buffer name
+  vim.api.nvim_buf_set_name(buf, "[shell] " .. cmd)
 
-	-- start async job
-	vim.fn.jobstart(cmd, {
-		stdout_buffered = true,
-		stderr_buffered = true,
+  -- start async job
+  vim.fn.jobstart(cmd, {
+    stdout_buffered = true,
+    stderr_buffered = true,
 
-		on_stdout = function(_, data)
-			if data and #data > 0 then
-				vim.api.nvim_buf_set_lines(buf, -1, -1, false, data)
-			end
-		end,
+    on_stdout = function(_, data)
+      if data and #data > 0 then
+        vim.api.nvim_buf_set_lines(buf, -1, -1, false, data)
+      end
+    end,
 
-		on_stderr = function(_, data)
-			if data and #data > 0 then
-				vim.api.nvim_buf_set_lines(buf, -1, -1, false, data)
-			end
-		end,
-	})
+    on_stderr = function(_, data)
+      if data and #data > 0 then
+        vim.api.nvim_buf_set_lines(buf, -1, -1, false, data)
+      end
+    end,
+  })
 end, { nargs = "+" })
 
 -- Keymaps
@@ -120,11 +120,11 @@ keymap.set("n", "<C-w><down>", "C-w>-")
 
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
-	vim.diagnostic.jump({ count = 1, float = true })
+  vim.diagnostic.jump({ count = 1, float = true })
 end, opts)
 
 keymap.set("n", "<C-k>", function()
-	vim.diagnostic.jump({ count = -1, float = true })
+  vim.diagnostic.jump({ count = -1, float = true })
 end, opts)
 
 -- Stop search and clear highlighting on escape
@@ -136,107 +136,111 @@ keymap.set("s", "<Esc>", "<cmd>noh<CR><Esc>", opts)
 
 -- Resize splits when window is resized
 vim.api.nvim_create_autocmd("VimResized", {
-	pattern = "*",
-	callback = function()
-		local current_tab = vim.fn.tabpagenr()
-		vim.cmd("tabdo wincmd =")
-		vim.cmd("tabnext " .. current_tab)
-	end,
+  pattern = "*",
+  callback = function()
+    local current_tab = vim.fn.tabpagenr()
+    vim.cmd("tabdo wincmd =")
+    vim.cmd("tabnext " .. current_tab)
+  end,
 })
 
 -- Go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
-	pattern = "*",
-	callback = function(event)
-		local exclude = { "gitcommit" }
-		local buf = event.buf
-		if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].lazyvim_last_loc then
-			return
-		end
-		vim.b[buf].lazyvim_last_loc = true
-		local mark = vim.api.nvim_buf_get_mark(buf, '"')
-		local lcount = vim.api.nvim_buf_line_count(buf)
-		if mark[1] > 0 and mark[1] <= lcount then
-			pcall(vim.api.nvim_win_set_cursor, 0, mark)
-		end
-	end,
+  pattern = "*",
+  callback = function(event)
+    local exclude = { "gitcommit" }
+    local buf = event.buf
+    if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].lazyvim_last_loc then
+      return
+    end
+    vim.b[buf].lazyvim_last_loc = true
+    local mark = vim.api.nvim_buf_get_mark(buf, '"')
+    local lcount = vim.api.nvim_buf_line_count(buf)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
 })
 
 -- Fix conceal level for json files
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "json", "jsonc", "json5" },
-	callback = function()
-		vim.opt_local.conceallevel = 0
-	end,
+  pattern = { "json", "jsonc", "json5" },
+  callback = function()
+    vim.opt_local.conceallevel = 0
+  end,
 })
 
 -- Auto create directories when saving a file
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(event)
-		if event.match:match("^%w%w+:[\\/][\\/]") then
-			return
-		end
-		local file = vim.uv.fs_realpath(event.match) or event.match
-		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
-	end,
+  pattern = "*",
+  callback = function(event)
+    if event.match:match("^%w%w+:[\\/][\\/]") then
+      return
+    end
+    local file = vim.uv.fs_realpath(event.match) or event.match
+    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+  end,
 })
 
 -- Plugins
 
 vim.pack.add({
-	{ src = "https://github.com/rose-pine/neovim",       name = "rose-pine" },
-	"https://github.com/nvim-tree/nvim-web-devicons",
-	"https://github.com/nvim-lualine/lualine.nvim",
-	"https://github.com/akinsho/bufferline.nvim",
-	"https://github.com/neovim/nvim-lspconfig",
-	"https://github.com/linux-cultist/venv-selector.nvim",
-	"https://github.com/nvim-mini/mini.pairs",
-	"https://github.com/nvim-mini/mini.surround",
-	"https://github.com/lervag/vimtex",
-	"https://github.com/copilotlsp-nvim/copilot-lsp",
-	{ src = "https://github.com/zbirenbaum/copilot.lua", name = "copilot" },
-	"https://codeberg.org/mfussenegger/nvim-jdtls"
+  { src = "https://github.com/rose-pine/neovim",       name = "rose-pine" },
+  "https://github.com/nvim-tree/nvim-web-devicons",
+  "https://github.com/nvim-lualine/lualine.nvim",
+  "https://github.com/akinsho/bufferline.nvim",
+  "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/linux-cultist/venv-selector.nvim",
+  "https://github.com/nvim-mini/mini.pairs",
+  "https://github.com/nvim-mini/mini.surround",
+  "https://github.com/lervag/vimtex",
+  "https://github.com/lukas-reineke/indent-blankline.nvim",
+  "https://github.com/copilotlsp-nvim/copilot-lsp",
+  { src = "https://github.com/zbirenbaum/copilot.lua", name = "copilot" },
+  "https://codeberg.org/mfussenegger/nvim-jdtls"
 })
 
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
 require("plugins.lsp")
+
 require("copilot-lsp").setup({})
 require("copilot").setup({})
+
 require("rose-pine").setup({ styles = { transparency = true } })
 vim.cmd("colorscheme rose-pine")
 require("plugins.snacks")
 require("lualine").setup({
-	sections = {
-		lualine_y = {
-			{ "progress", separator = " ",                  padding = { left = 1, right = 0 } },
-			{ "location", padding = { left = 0, right = 1 } },
-		},
-		lualine_z = {
-			function()
-				return " " .. os.date("%R")
-			end,
-		},
-	}
+  sections = {
+    lualine_y = {
+      { "progress", separator = " ",                  padding = { left = 1, right = 0 } },
+      { "location", padding = { left = 0, right = 1 } },
+    },
+    lualine_z = {
+      function()
+        return " " .. os.date("%R")
+      end,
+    },
+  }
 })
 require("bufferline").setup({
-	options = {
-		always_show_bufferline = false,
-		offsets = {
-			{
-				filetype = "snacks_layout_box",
-				separator = true,
-			},
-		},
-	}
+  options = {
+    always_show_bufferline = false,
+    offsets = {
+      {
+        filetype = "snacks_layout_box",
+        separator = true,
+      },
+    },
+  }
 })
 require("venv-selector").setup({
-	default = "venv",
+  default = "venv",
 })
 keymap.set("n", "<leader>cv", "<cmd>VenvSelect<CR>", opts)
 require("mini.pairs").setup()
 require("mini.surround").setup({
-	mappings = { highlight = "" }
+  mappings = { highlight = "" }
 })
+require("ibl").setup()
 require("plugins.competitest")
 require("plugins.dap")
