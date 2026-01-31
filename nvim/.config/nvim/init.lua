@@ -234,7 +234,14 @@ require("venv-selector").setup({
 })
 
 require("copilot").setup({
-  suggestion = { auto_trigger = true, hide_during_completion = false, keymap = { accept = false, toggle_auto_trigger = "<leader>ui" } }
+  suggestion = {
+    auto_trigger = true,
+    hide_during_completion = false,
+    keymap = {
+      accept = false,
+      accept_word = "<C-l>"
+    }
+  }
 })
 keymap.set("i", "<Tab>", function()
   if require("copilot.suggestion").is_visible() then
