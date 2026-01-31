@@ -15,24 +15,34 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-    -- Enable auto-completion.
+    -- Enable auto-completion
     if client:supports_method('textDocument/completion') then
       -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
       -- client.server_capabilities.completionProvider.triggerCharacters = chars
       vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
 
-    -- Enable inline auto-completion.
-    if client:supports_method('textDocument/inlineCompletion') then
-      vim.lsp.inline_completion.enable(true)
-      keymap.set("i", "<Tab>", function()
-          return vim.lsp.inline_completion.get() and nil or "<Tab>"
-        end,
-        { desc = "Apply inline completion if visible" }
-      )
-    end
+    -- Enable inline completion
+    -- if client:supports_method('textDocument/inlineCompletion') then
+    --   vim.lsp.inline_completion.enable(true)
+    --   vim.keymap.set("i", "<Tab>", function()
+    --       if not vim.lsp.inline_completion.get() then
+    --         return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
+    --       end
+    --     end,
+    --     { expr = true, desc = "Accept the current inline completion" }
+    --   )
+    --
+    --   -- Toggle inline completion
+    --   vim.keymap.set("n", "<leader>ui", function()
+    --     local enabled = vim.lsp.inline_completion.is_enabled()
+    --     vim.lsp.inline_completion.enable(not enabled)
+    --     local status = enabled and "disabled" or "enabled"
+    --     print("Inline completion " .. status)
+    --   end, { desc = "Toggle inline completion" })
+    -- end
 
-    -- Auto-format ("lint") on save.
+    -- Auto-format ("lint") on save
     if not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then
       -- Enable autoformat by default
@@ -54,6 +64,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local status = vim.b[args.buf].autoformat and "enabled" or "disabled"
         print("Autoformat " .. status)
       end, { buffer = args.buf, desc = "Toggle autoformat" })
+
+      -- Inlay Hints
+      Snacks.util.lsp.on({ method = "textDocument/inlayHint" }, function(buffer)
+        if
+            vim.api.nvim_buf_is_valid(buffer)
+            and vim.bo[buffer].buftype == ""
+        then
+          vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+        end
+      end)
     end
   end,
 })

@@ -185,7 +185,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- Plugins
 
 vim.pack.add({
-  { src = "https://github.com/rose-pine/neovim",       name = "rose-pine" },
+  { src = "https://github.com/rose-pine/neovim", name = "rose-pine" },
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/akinsho/bufferline.nvim",
@@ -195,16 +195,12 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.surround",
   "https://github.com/lervag/vimtex",
   "https://github.com/lukas-reineke/indent-blankline.nvim",
-  "https://github.com/copilotlsp-nvim/copilot-lsp",
-  { src = "https://github.com/zbirenbaum/copilot.lua", name = "copilot" },
-  "https://codeberg.org/mfussenegger/nvim-jdtls"
+  "https://codeberg.org/mfussenegger/nvim-jdtls",
+  "https://github.com/zbirenbaum/copilot.lua"
 })
 
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
 require("plugins.lsp")
-
-require("copilot-lsp").setup({})
-require("copilot").setup({})
 
 require("rose-pine").setup({ styles = { transparency = true } })
 vim.cmd("colorscheme rose-pine")
@@ -236,6 +232,18 @@ require("bufferline").setup({
 require("venv-selector").setup({
   default = "venv",
 })
+
+require("copilot").setup({
+  suggestion = { auto_trigger = true, hide_during_completion = false, keymap = { accept = false, toggle_auto_trigger = "<leader>ui" } }
+})
+keymap.set("i", "<Tab>", function()
+  if require("copilot.suggestion").is_visible() then
+    return require("copilot.suggestion").accept()
+  else
+    return "<Tab>"
+  end
+end, { expr = true, noremap = true })
+
 keymap.set("n", "<leader>cv", "<cmd>VenvSelect<CR>", opts)
 require("mini.pairs").setup()
 require("mini.surround").setup({
