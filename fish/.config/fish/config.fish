@@ -3,6 +3,7 @@ if status is-interactive
 end
 
 zoxide init fish --cmd cd | source
+starship init fish | source
 eval (try init ~/src/tries | string collect)
 
 # if kitty, use printf '\033c' to clear the screen

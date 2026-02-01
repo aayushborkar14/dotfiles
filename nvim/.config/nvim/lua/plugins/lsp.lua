@@ -22,26 +22,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
 
-    -- Enable inline completion
-    -- if client:supports_method('textDocument/inlineCompletion') then
-    --   vim.lsp.inline_completion.enable(true)
-    --   vim.keymap.set("i", "<Tab>", function()
-    --       if not vim.lsp.inline_completion.get() then
-    --         return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
-    --       end
-    --     end,
-    --     { expr = true, desc = "Accept the current inline completion" }
-    --   )
-    --
-    --   -- Toggle inline completion
-    --   vim.keymap.set("n", "<leader>ui", function()
-    --     local enabled = vim.lsp.inline_completion.is_enabled()
-    --     vim.lsp.inline_completion.enable(not enabled)
-    --     local status = enabled and "disabled" or "enabled"
-    --     print("Inline completion " .. status)
-    --   end, { desc = "Toggle inline completion" })
-    -- end
-
     -- Auto-format ("lint") on save
     if not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then
