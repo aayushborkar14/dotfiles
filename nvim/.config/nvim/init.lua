@@ -196,7 +196,8 @@ vim.pack.add({
   "https://github.com/lervag/vimtex",
   "https://github.com/lukas-reineke/indent-blankline.nvim",
   "https://codeberg.org/mfussenegger/nvim-jdtls",
-  "https://github.com/zbirenbaum/copilot.lua"
+  "https://github.com/zbirenbaum/copilot.lua",
+  "https://github.com/AndreM222/copilot-lualine"
 })
 
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
@@ -207,6 +208,7 @@ vim.cmd("colorscheme mellow")
 require("plugins.snacks")
 require("lualine").setup({
   sections = {
+    lualine_x = { 'copilot', 'encoding', 'fileformat', 'filetype' },
     lualine_y = {
       { "progress", separator = " ",                  padding = { left = 1, right = 0 } },
       { "location", padding = { left = 0, right = 1 } },
