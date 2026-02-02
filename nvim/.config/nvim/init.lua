@@ -185,7 +185,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- Plugins
 
 vim.pack.add({
-  { src = "https://github.com/rose-pine/neovim", name = "rose-pine" },
+  "https://github.com/mellow-theme/mellow.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/akinsho/bufferline.nvim",
@@ -202,8 +202,8 @@ vim.pack.add({
 require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
 require("plugins.lsp")
 
-require("rose-pine").setup({ styles = { transparency = true } })
-vim.cmd("colorscheme rose-pine")
+vim.g.mellow_transparent = true
+vim.cmd("colorscheme mellow")
 require("plugins.snacks")
 require("lualine").setup({
   sections = {
