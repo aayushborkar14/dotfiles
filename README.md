@@ -1,4 +1,4 @@
 # dotfiles
 
-My configuration files for fish, homebrew, kitty, nvim.
+My configuration files for fish, homebrew, kitty, nvim, starship.
 

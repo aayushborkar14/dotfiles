@@ -1,0 +1,21 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+[directory]
+style = "blue"
+truncate_to_repo = false
+truncation_length = 8
+
+[hostname]
+style = "bold green"
+
+[username]
+show_always = true
+
+[python]
+disabled = true
+
+[package]
+disabled = true
+
+[character]
+success_symbol = "[❯](bold purple)"
