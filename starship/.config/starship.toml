@@ -16,6 +16,3 @@ disabled = true
 
 [package]
 disabled = true
-
-[character]
-success_symbol = "[❯](bold purple)"
