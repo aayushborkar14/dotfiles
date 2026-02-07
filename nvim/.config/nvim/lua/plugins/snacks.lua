@@ -4,6 +4,13 @@ require("snacks").setup({
   indent = { enabled = true },
   notifier = {
     enabled = true,
+    filter = function(notification)
+      -- Ignore "Format request failed" for python files
+      if notification.msg:match("Format request failed") and vim.bo.filetype == "python" then
+        return false
+      end
+      return true
+    end,
   },
 })
 
