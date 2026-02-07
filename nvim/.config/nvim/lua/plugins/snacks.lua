@@ -2,6 +2,9 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" })
 require("snacks").setup({
   scroll = { enabled = true },
   indent = { enabled = true },
+  notifier = {
+    enabled = true,
+  },
 })
 
 -- Top Pickers & Explorer
@@ -78,6 +81,10 @@ vim.keymap.set("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, { 
 vim.keymap.set("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
 vim.keymap.set("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end,
   { desc = "LSP Workspace Symbols" })
+
+-- Notifier
+vim.keymap.set("n", "<leader>su", function() Snacks.notifier.hide() end, { desc = "Dismiss Notification" })
+vim.keymap.set("n", "<leader>sh", function() Snacks.notifier.show_history() end, { desc = "Notification History" })
 
 -- Other
 vim.keymap.set("n", "<leader>z", function() Snacks.zen() end, { desc = "Toggle Zen Mode" })

@@ -199,7 +199,6 @@ vim.pack.add({
   "https://github.com/AndreM222/copilot-lualine"
 })
 
-require("vim._extui").enable({}) -- https://github.com/neovim/neovim/pull/27855
 require("plugins.lsp")
 
 vim.g.mellow_transparent = true
