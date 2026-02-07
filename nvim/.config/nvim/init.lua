@@ -194,7 +194,6 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.pairs",
   "https://github.com/nvim-mini/mini.surround",
   "https://github.com/lervag/vimtex",
-  "https://github.com/lukas-reineke/indent-blankline.nvim",
   "https://codeberg.org/mfussenegger/nvim-jdtls",
   "https://github.com/zbirenbaum/copilot.lua",
   "https://github.com/AndreM222/copilot-lualine"
@@ -258,6 +257,5 @@ require("mini.pairs").setup()
 require("mini.surround").setup({
   mappings = { highlight = "" }
 })
-require("ibl").setup()
 require("plugins.competitest")
 require("plugins.dap")
