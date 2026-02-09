@@ -12,6 +12,7 @@ require("snacks").setup({
       return true
     end,
   },
+  input = { enabled = true, }
 })
 
 -- Top Pickers & Explorer
@@ -80,7 +81,7 @@ vim.keymap.set("n", "<leader>uC", function() Snacks.picker.colorschemes() end, {
 -- LSP
 vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
 vim.keymap.set("n", "gD", function() Snacks.picker.lsp_declarations() end, { desc = "Goto Declaration" })
-vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references() end, { desc = "References", nowait = true })
+vim.keymap.set("n", "grr", function() Snacks.picker.lsp_references() end, { desc = "References", nowait = true })
 vim.keymap.set("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
 vim.keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto Type Definition" })
 vim.keymap.set("n", "gai", function() Snacks.picker.lsp_incoming_calls() end, { desc = "Incoming Calls" })
@@ -90,7 +91,7 @@ vim.keymap.set("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols
   { desc = "LSP Workspace Symbols" })
 
 -- Notifier
-vim.keymap.set("n", "<leader>su", function() Snacks.notifier.hide() end, { desc = "Dismiss Notification" })
+vim.keymap.set("n", "<leader>sU", function() Snacks.notifier.hide() end, { desc = "Dismiss Notification" })
 vim.keymap.set("n", "<leader>sh", function() Snacks.notifier.show_history() end, { desc = "Notification History" })
 
 -- Other
