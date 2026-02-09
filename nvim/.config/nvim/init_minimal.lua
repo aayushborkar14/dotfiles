@@ -8,18 +8,13 @@ o.smartindent = true
 o.wrap = false
 o.autoread = true
 o.cursorline = true
-o.smoothscroll = true
 o.wildmode = { "lastused", "full" }
-o.autocomplete = true
 o.completeopt = { "menu", "noinsert" }
 o.pumheight = 5
 o.number = true
 o.relativenumber = true
-o.cmdheight = 0
-o.signcolumn = "yes"
 o.laststatus = 3
 o.showtabline = 2 -- always show tabline (we use it for a plugin-free bufferline)
-o.winborder = "rounded"
 o.undofile = true
 o.ignorecase = true
 o.smartcase = true
@@ -176,7 +171,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     if event.match:match("^%w%w+:[\\/][\\/]") then
       return
     end
-    local file = vim.uv.fs_realpath(event.match) or event.match
+    local file = vim.loop.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
