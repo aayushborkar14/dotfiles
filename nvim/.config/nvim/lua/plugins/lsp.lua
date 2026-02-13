@@ -14,21 +14,6 @@ vim.lsp.enable({
   "ruff",    -- uv tool install ruff@latest
 })
 
-require("conform").setup({
-  formatters_by_ft = {
-    java = { "google_java_format" },
-  },
-  format_on_save = {
-    timeout_ms = 500,
-    lsp_format = "fallback",
-  }
-})
-
-require("venv-selector").setup({
-  default = "venv",
-})
-keymap.set("n", "<leader>cv", "<cmd>VenvSelect<CR>", opts)
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(args)
@@ -53,3 +38,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end)
   end,
 })
+
+require("conform").setup({
+  formatters_by_ft = {
+    java = { "google-java-format" },
+  },
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_format = "fallback",
+  }
+})
+
+require("venv-selector").setup({
+  default = "venv",
+})
+keymap.set("n", "<leader>cv", "<cmd>VenvSelect<CR>", opts)
