@@ -189,14 +189,11 @@ vim.pack.add({
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/akinsho/bufferline.nvim",
-  "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/linux-cultist/venv-selector.nvim",
   "https://github.com/nvim-mini/mini.pairs",
   "https://github.com/nvim-mini/mini.surround",
-  "https://github.com/lervag/vimtex",
-  "https://codeberg.org/mfussenegger/nvim-jdtls",
   "https://github.com/zbirenbaum/copilot.lua",
-  "https://github.com/AndreM222/copilot-lualine"
+  "https://github.com/AndreM222/copilot-lualine",
+  "https://github.com/MunifTanjim/nui.nvim",
 })
 
 require("plugins.lsp")
@@ -228,10 +225,6 @@ require("bufferline").setup({
     },
   }
 })
-require("venv-selector").setup({
-  default = "venv",
-})
-
 require("copilot").setup({
   suggestion = {
     auto_trigger = true,
@@ -250,7 +243,6 @@ keymap.set("i", "<Tab>", function()
   end
 end, { expr = true, noremap = true })
 
-keymap.set("n", "<leader>cv", "<cmd>VenvSelect<CR>", opts)
 require("mini.pairs").setup()
 require("mini.surround").setup({
   mappings = { highlight = "" }

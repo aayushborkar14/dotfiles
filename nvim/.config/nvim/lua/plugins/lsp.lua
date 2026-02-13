@@ -1,13 +1,33 @@
 local vim = vim -- suppress lsp warnings
+vim.pack.add({
+  "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/stevearc/conform.nvim",
+  "https://github.com/linux-cultist/venv-selector.nvim",
+  "https://github.com/lervag/vimtex"
+})
 local keymap = vim.keymap
 
 vim.lsp.enable({
   "clangd",  -- sudo apt install clangd-18
-  "jdtls",   -- brew install jdtls
   "lua_ls",  -- brew install lua-language-server
   "pyright", -- npm i -g pyright
   "ruff",    -- uv tool install ruff@latest
 })
+
+require("conform").setup({
+  formatters_by_ft = {
+    java = { "google_java_format" },
+  },
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_format = "fallback",
+  }
+})
+
+require("venv-selector").setup({
+  default = "venv",
+})
+keymap.set("n", "<leader>cv", "<cmd>VenvSelect<CR>", opts)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
@@ -22,38 +42,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
 
-    -- Auto-format ("lint") on save
-    if not client:supports_method('textDocument/willSaveWaitUntil')
-        and client:supports_method('textDocument/formatting') then
-      -- Enable autoformat by default
-      vim.b[args.buf].autoformat = true
-
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
-        buffer = args.buf,
-        callback = function()
-          if vim.b[args.buf].autoformat then
-            vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-          end
-        end,
-      })
-
-      -- Keybind to toggle autoformat
-      keymap.set("n", "<leader>uf", function()
-        vim.b[args.buf].autoformat = not vim.b[args.buf].autoformat
-        local status = vim.b[args.buf].autoformat and "enabled" or "disabled"
-        print("Autoformat " .. status)
-      end, { buffer = args.buf, desc = "Toggle autoformat" })
-
-      -- Inlay Hints
-      Snacks.util.lsp.on({ method = "textDocument/inlayHint" }, function(buffer)
-        if
-            vim.api.nvim_buf_is_valid(buffer)
-            and vim.bo[buffer].buftype == ""
-        then
-          vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
-        end
-      end)
-    end
+    -- Inlay Hints
+    Snacks.util.lsp.on({ method = "textDocument/inlayHint" }, function(buffer)
+      if
+          vim.api.nvim_buf_is_valid(buffer)
+          and vim.bo[buffer].buftype == ""
+      then
+        vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+      end
+    end)
   end,
 })
