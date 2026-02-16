@@ -41,7 +41,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 require("conform").setup({
   formatters_by_ft = {
-    java = { "google-java-format" },
+    java = { "google-java-format" }, -- brew install google-java-format
+    javascript = { "prettierd" },    -- brew install prettierd
+    javascriptreact = { "prettierd" }
   },
   format_on_save = {
     timeout_ms = 500,
