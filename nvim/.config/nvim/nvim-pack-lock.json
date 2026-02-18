@@ -20,6 +20,10 @@
       "rev": "9b8d77c6c847c83c784c05f5f86b4821ed90d3a1",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
+    "flexoki-neovim": {
+      "rev": "c3e2251e813d29d885a7cbbe9808a7af234d845d",
+      "src": "https://github.com/kepano/flexoki-neovim"
+    },
     "lualine.nvim": {
       "rev": "3946f0122255bc377d14a59b27b609fb3ab25768",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
@@ -63,6 +67,10 @@
     "snacks.nvim": {
       "rev": "836e07336ba523d4da480cd66f0241815393e98e",
       "src": "https://github.com/folke/snacks.nvim"
+    },
+    "tokyonight.nvim": {
+      "rev": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd",
+      "src": "https://github.com/folke/tokyonight.nvim"
     },
     "venv-selector.nvim": {
       "rev": "58bae72c84b9f7f864c879ec1896e384296f9ffb",
