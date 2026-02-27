@@ -28,10 +28,6 @@
       "rev": "3946f0122255bc377d14a59b27b609fb3ab25768",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
-    "mellow.nvim": {
-      "rev": "5cd188489bcc7eb512f0a30581ad972070f8e5cd",
-      "src": "https://github.com/mellow-theme/mellow.nvim"
-    },
     "mini.pairs": {
       "rev": "b316e68f2d242d5bd010deaab645daa27ed86297",
       "src": "https://github.com/nvim-mini/mini.pairs"

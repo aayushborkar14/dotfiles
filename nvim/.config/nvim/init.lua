@@ -185,7 +185,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- Plugins
 
 vim.pack.add({
-  "https://github.com/mellow-theme/mellow.nvim",
   "https://github.com/folke/tokyonight.nvim",
   "https://github.com/kepano/flexoki-neovim",
   "https://github.com/nvim-tree/nvim-web-devicons",
@@ -199,11 +198,9 @@ vim.pack.add({
 })
 
 require("plugins.lsp")
-vim.g.mellow_transparent = true
 require("tokyonight").setup({
   transparent = true,
 })
--- vim.cmd("colorscheme mellow")
 -- vim.cmd("colorscheme tokyonight-night")
 vim.cmd("colorscheme flexoki-dark")
 require("plugins.snacks")

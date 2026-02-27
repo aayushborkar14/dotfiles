@@ -1,4 +1,5 @@
 # Develop
+brew "bear"
 brew "jdtls"
 brew "lazygit"
 brew "lua-language-server"
