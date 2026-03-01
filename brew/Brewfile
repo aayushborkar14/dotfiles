@@ -21,6 +21,7 @@ brew "ripgrep"
 brew "starship"
 brew "stow"
 brew "wget"
+brew "yazi"
 brew "zoxide"
 
 cask "bitwarden"

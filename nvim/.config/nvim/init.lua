@@ -32,6 +32,7 @@ o.grepprg = "rg --vimgrep"
 o.smartcase = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.g.loaded_netrwPlugin = 1
 vim.opt.clipboard:append("unnamedplus")
 
 -- User Commands
@@ -195,6 +196,8 @@ vim.pack.add({
   "https://github.com/zbirenbaum/copilot.lua",
   "https://github.com/AndreM222/copilot-lualine",
   "https://github.com/MunifTanjim/nui.nvim",
+  "https://github.com/mikavilpas/yazi.nvim",
+  "https://github.com/nvim-lua/plenary.nvim"
 })
 
 require("plugins.lsp")
@@ -253,3 +256,10 @@ require("mini.surround").setup({
 })
 require("plugins.competitest")
 require("plugins.dap")
+
+require("yazi").setup({
+  open_for_directories = true,
+})
+keymap.set("n", "<leader>-", "<cmd>Yazi<cr>")
+keymap.set("v", "<leader>-", "<cmd>Yazi<cr>")
+keymap.set("n", "<leader>cw", "<cmd>Yazi cwd<cr>")
