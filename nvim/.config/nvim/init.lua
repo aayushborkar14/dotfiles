@@ -183,6 +183,17 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+-- Disable autocomplete on snacks
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.bo.buftype == "prompt" then
+      vim.opt_local.autocomplete = false
+      vim.opt_local.completeopt = ""
+      return
+    end
+  end,
+})
+
 -- Plugins
 
 vim.pack.add({
@@ -200,13 +211,13 @@ vim.pack.add({
   "https://github.com/nvim-lua/plenary.nvim"
 })
 
+require("plugins.snacks")
 require("plugins.lsp")
 require("tokyonight").setup({
   transparent = true,
 })
 -- vim.cmd("colorscheme tokyonight-night")
 vim.cmd("colorscheme flexoki-dark")
-require("plugins.snacks")
 require("lualine").setup({
   sections = {
     lualine_x = { 'copilot', 'encoding', 'fileformat', 'filetype' },

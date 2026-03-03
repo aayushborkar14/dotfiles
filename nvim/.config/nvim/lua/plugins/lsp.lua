@@ -52,6 +52,6 @@ require("conform").setup({
 })
 
 require("venv-selector").setup({
-  default = "venv",
+  picker = "snacks"
 })
 keymap.set("n", "<leader>cv", "<cmd>VenvSelect<CR>", opts)
