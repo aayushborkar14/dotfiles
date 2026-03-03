@@ -1,5 +1,7 @@
 # Develop
 brew "bear"
+brew "clang-format"
+brew "google-java-format"
 brew "jdtls"
 brew "lazygit"
 brew "lua-language-server"
@@ -24,8 +26,10 @@ brew "wget"
 brew "yazi"
 brew "zoxide"
 
+# Cask
 cask "bitwarden"
 cask "discord"
+cask "firefox"
 cask "kitty"
 cask "mos"
 cask "raycast"

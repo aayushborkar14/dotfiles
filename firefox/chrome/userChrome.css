@@ -1,0 +1,59 @@
+/* Utility Variables */
+:root {
+  --color-overlap: rgba(0, 0, 0, .05);
+  --color-overlap-dark: rgba(0, 0, 0, .5);
+  
+  --browser-margins: 0px;
+}
+ 
+:root {
+  --toolbar-field-focus-background-color: rgba(30, 30, 30, 0.95) !important;
+  appearance: -moz-sidebar !important;
+}
+
+/* Modular Styling */
+:root:not([windowtype="Toolkit:PictureInPicture"],
+[inDOMFullscreen]) {
+  #browser {
+    background: var(--color-overlap) !important;
+    border: 0px solid transparent;
+    #sidebar-main, .browserContainer {
+      background: transparent !important;
+      border: 0px solid transparent;
+      outline: none !important;
+      #tabbrowser-tabpanels {
+        background: transparent !important;
+      }
+    }
+  }
+  #navigator-toolbox {
+    mix-blend-mode: screen;
+    margin: var(--browser-margins);
+    background: var(--color-overlap) !important;
+    > * {
+      background: inherit !important;
+    }
+  }
+  #nav-bar {
+    border-top: none !important;
+  }
+}
+
+/* Tab styling for more visual separation */
+#tabbrowser-tabs tab {
+  &, & * {
+    transition: all ease .3s !important;
+  }
+  &[selected="true"] {
+    .tab-background {
+      background: rgba(30, 30, 30, 0.30) !important;
+    }
+  }
+  &:hover {
+    .tab-background {
+    }
+    .tab-icon-stack {
+      scale: 1.2;
+    }
+  }
+}
