@@ -1,0 +1,29 @@
+@-moz-document url-prefix("about:") {
+  body {
+    background: #1C1B1A !important;
+  }
+}
+
+@-moz-document url-prefix("about:config") {
+    #prefs {
+        background: #1C1B1A !important;
+        tr.odd {
+            background: #343331 !important;
+        }
+        tr{
+            background: #1C1B1A !important;
+        }
+    }
+}
+
+@-moz-document url-prefix("about:addons"), url-prefix("about:preferences") {
+    .sticky-container {
+        position: relative !important;
+        &, & > * {
+            background: #1C1B1A !important;
+        }
+    }
+    .card.addon {
+        background: #1C1B1A !important;
+    }
+}
