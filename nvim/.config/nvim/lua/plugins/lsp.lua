@@ -8,10 +8,12 @@ vim.pack.add({
 local keymap = vim.keymap
 
 vim.lsp.enable({
-  "clangd",  -- sudo apt install clangd-18
-  "lua_ls",  -- brew install lua-language-server
-  "pyright", -- npm i -g pyright
-  "ruff",    -- uv tool install ruff@latest
+  "clangd",        -- sudo apt install clangd-18
+  "lua_ls",        -- brew install lua-language-server
+  "gopls",         -- brew install gopls
+  "pyright",       -- npm i -g pyright
+  "ruff",          -- uv tool install ruff@latest
+  "rust-analyzer", -- brew install rust-analyzer
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -43,7 +45,9 @@ require("conform").setup({
   formatters_by_ft = {
     java = { "google-java-format" }, -- brew install google-java-format
     javascript = { "prettierd" },    -- brew install prettierd
-    javascriptreact = { "prettierd" }
+    javascriptreact = { "prettierd" },
+    typescript = { "prettierd" },
+    typescriptreact = { "prettierd" },
   },
   format_on_save = {
     timeout_ms = 500,

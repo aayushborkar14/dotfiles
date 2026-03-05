@@ -208,7 +208,8 @@ vim.pack.add({
   "https://github.com/AndreM222/copilot-lualine",
   "https://github.com/MunifTanjim/nui.nvim",
   "https://github.com/mikavilpas/yazi.nvim",
-  "https://github.com/nvim-lua/plenary.nvim"
+  "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/MeanderingProgrammer/render-markdown.nvim"
 })
 
 require("plugins.snacks")

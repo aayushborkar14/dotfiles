@@ -1,6 +1,8 @@
 # Develop
 brew "bear"
 brew "clang-format"
+brew "go"
+brew "gopls"
 brew "google-java-format"
 brew "jdtls"
 brew "lazygit"
@@ -8,6 +10,8 @@ brew "lua-language-server"
 brew "node"
 brew "opencode"
 brew "prettierd"
+brew "rust"
+brew "rust-analyzer"
 brew "uv"
 
 # System
