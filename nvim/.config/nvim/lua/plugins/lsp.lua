@@ -1,11 +1,25 @@
 local vim = vim -- suppress lsp warnings
 vim.pack.add({
+  "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/linux-cultist/venv-selector.nvim",
   "https://github.com/lervag/vimtex"
 })
 local keymap = vim.keymap
+
+local treesitter_langs = {
+  "c", "cpp", "java", "jsx", "javascript", "json", "lua", "markdown", "markdown_inline", "python", "rust", "go",
+  "tsx", "typescript", "vimdoc", "vim"
+}
+require("nvim-treesitter").install(treesitter_langs)
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = treesitter_langs,
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
 
 vim.lsp.enable({
   "clangd",        -- sudo apt install clangd-18

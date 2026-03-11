@@ -56,6 +56,10 @@
       "rev": "dc7e7c7699cc01b1b6fefa97f9b496d8f447d7a1",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
+    "nvim-treesitter": {
+      "rev": "5cb05e1b0fa3c469958a2b26f36b3fe930af221c",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
     "nvim-web-devicons": {
       "rev": "8dcb311b0c92d460fac00eac706abd43d94d68af",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"

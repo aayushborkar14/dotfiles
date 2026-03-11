@@ -11,6 +11,7 @@ end
 alias rm trash
 alias x clear
 alias v nvim
+alias g "glow -t"
 
 alias .. "cd .."
 alias ... "cd ../.."

@@ -12,6 +12,7 @@ brew "opencode"
 brew "prettierd"
 brew "rust"
 brew "rust-analyzer"
+brew "tree-sitter-cli"
 brew "uv"
 
 # System
