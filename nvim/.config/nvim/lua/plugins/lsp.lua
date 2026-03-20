@@ -7,6 +7,7 @@ vim.pack.add({
   "https://github.com/lervag/vimtex"
 })
 local keymap = vim.keymap
+vim.g.vimtex_view_method = 'skim'
 
 local treesitter_langs = {
   "c", "cpp", "java", "jsx", "javascript", "json", "lua", "markdown", "markdown_inline", "python", "rust", "go",
@@ -28,6 +29,7 @@ vim.lsp.enable({
   "pyright",       -- npm i -g pyright
   "ruff",          -- uv tool install ruff@latest
   "rust-analyzer", -- brew install rust-analyzer
+  "texlab",        -- brew install texlab
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
