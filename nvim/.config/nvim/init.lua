@@ -198,7 +198,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.pack.add({
   "https://github.com/folke/tokyonight.nvim",
-  "https://github.com/kepano/flexoki-neovim",
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/akinsho/bufferline.nvim",
@@ -209,7 +208,9 @@ vim.pack.add({
   "https://github.com/MunifTanjim/nui.nvim",
   "https://github.com/mikavilpas/yazi.nvim",
   "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+  "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+  "https://github.com/craftzdog/solarized-osaka.nvim",
+  "flexoki-neovim"
 })
 
 require("plugins.snacks")
@@ -231,7 +232,7 @@ require("lualine").setup({
         return " " .. os.date("%R")
       end,
     },
-  }
+  },
 })
 require("bufferline").setup({
   options = {

@@ -30,6 +30,7 @@ vim.lsp.enable({
   "ruff",          -- uv tool install ruff@latest
   "rust-analyzer", -- brew install rust-analyzer
   "texlab",        -- brew install texlab
+  "jdtls"          -- brew install jdtls
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -64,6 +65,7 @@ require("conform").setup({
     javascriptreact = { "prettierd" },
     typescript = { "prettierd" },
     typescriptreact = { "prettierd" },
+    sql = { "pg_format" }, -- brew install pgformatter
   },
   format_on_save = {
     timeout_ms = 500,
