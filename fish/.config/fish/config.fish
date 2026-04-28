@@ -1,5 +1,6 @@
 zoxide init fish --cmd cd | source
 starship init fish | source
+atuin init fish | source
 
 # if kitty, use printf '\033c' to clear the screen
 if test "$TERM" = "xterm-kitty"
