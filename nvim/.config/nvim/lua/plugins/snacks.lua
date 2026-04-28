@@ -12,7 +12,8 @@ require("snacks").setup({
       return true
     end,
   },
-  input = { enabled = true, }
+  input = { enabled = true, },
+  -- statuscolumn = { enabled = true, },
 })
 
 -- Top Pickers & Explorer

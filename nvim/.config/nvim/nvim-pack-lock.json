@@ -72,6 +72,10 @@
       "rev": "bd482f9a4827c9422231a7db1439c5cff1e69ae0",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
+    "rustaceanvim": {
+      "rev": "135f40f1243cf73963d34cf4694f8587cc07bee9",
+      "src": "https://github.com/mrcjkb/rustaceanvim"
+    },
     "snacks.nvim": {
       "rev": "836e07336ba523d4da480cd66f0241815393e98e",
       "src": "https://github.com/folke/snacks.nvim"

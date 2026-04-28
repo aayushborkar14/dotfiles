@@ -14,10 +14,11 @@ o.wildmode = { "lastused", "full" }
 o.autocomplete = true
 o.completeopt = { "menu", "noinsert" }
 o.pumheight = 5
-o.number = true
-o.relativenumber = true
-o.cmdheight = 0
+-- o.number = true
+-- o.relativenumber = true
 o.signcolumn = "yes"
+o.statuscolumn = "%C%s%=%{v:relnum == 0 ? v:lnum : v:relnum} "
+o.cmdheight = 0
 o.laststatus = 3
 o.winborder = "rounded"
 o.undofile = true
@@ -134,6 +135,13 @@ keymap.set("n", "<Esc>", "<cmd>noh<CR><Esc>", opts)
 keymap.set("s", "<Esc>", "<cmd>noh<CR><Esc>", opts)
 
 -- Auto commands
+
+-- Redraw statuscolumn on CursorMoved with a slight debounce
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+  callback = function()
+    o.statuscolumn = o.statuscolumn
+  end,
+})
 
 -- Resize splits when window is resized
 vim.api.nvim_create_autocmd("VimResized", {

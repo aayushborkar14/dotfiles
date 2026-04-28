@@ -4,7 +4,8 @@ vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/linux-cultist/venv-selector.nvim",
-  "https://github.com/lervag/vimtex"
+  "https://github.com/lervag/vimtex",
+  "https://github.com/mrcjkb/rustaceanvim"
 })
 local keymap = vim.keymap
 vim.g.vimtex_view_method = 'skim'
@@ -23,14 +24,14 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.lsp.enable({
-  "clangd",        -- sudo apt install clangd-18
-  "lua_ls",        -- brew install lua-language-server
-  "gopls",         -- brew install gopls
-  "pyright",       -- npm i -g pyright
-  "ruff",          -- uv tool install ruff@latest
-  "rust-analyzer", -- brew install rust-analyzer
-  "texlab",        -- brew install texlab
-  "jdtls"          -- brew install jdtls
+  "clangd",  -- sudo apt install clangd-18
+  "lua_ls",  -- brew install lua-language-server
+  "gopls",   -- brew install gopls
+  "pyright", -- npm i -g pyright
+  "ruff",    -- uv tool install ruff@latest
+  -- "rust-analyzer", -- brew install rust-analyzer
+  "texlab",  -- brew install texlab
+  "jdtls"    -- brew install jdtls
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
