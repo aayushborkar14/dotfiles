@@ -12,7 +12,7 @@ end
 alias rm trash
 alias x clear
 alias v nvim
-alias g "glow -t"
+alias g "glow -w $COLUMNS"
 
 alias .. "cd .."
 alias ... "cd ../.."
