@@ -13,7 +13,9 @@ brew "portaudio"
 brew "rust"
 brew "rust-analyzer"
 brew "texlab"
+brew "tinymist"
 brew "tree-sitter-cli"
+brew "typst"
 brew "uv"
 
 # System

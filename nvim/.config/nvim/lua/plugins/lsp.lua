@@ -24,14 +24,15 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.lsp.enable({
-  "clangd",  -- sudo apt install clangd-18
-  "lua_ls",  -- brew install lua-language-server
-  "gopls",   -- brew install gopls
-  "pyright", -- npm i -g pyright
-  "ruff",    -- uv tool install ruff@latest
+  "clangd",   -- sudo apt install clangd-18
+  "lua_ls",   -- brew install lua-language-server
+  "gopls",    -- brew install gopls
+  "pyright",  -- npm i -g pyright
+  "ruff",     -- uv tool install ruff@latest
   -- "rust-analyzer", -- brew install rust-analyzer
-  "texlab",  -- brew install texlab
-  "jdtls"    -- brew install jdtls
+  "texlab",   -- brew install texlab
+  "tinymist", -- brew install tinymist
+  "jdtls"     -- brew install jdtls
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {

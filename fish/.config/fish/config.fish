@@ -20,16 +20,17 @@ alias .... "cd ../../.."
 alias ..... "cd ../../../.."
 
 alias l eza
-alias ls "eza --icons=always --hyperlink"
-alias ll "eza --group --header --group-directories-first --long --hyperlink"
-alias lg "eza --group --header --group-directories-first --long --git --git-ignore --hyperlink"
-alias le "eza --group --header --group-directories-first --long --extended --hyperlink"
-alias lt "eza --group --header --group-directories-first --tree --level 3 --hyperlink"
+alias ls "eza --icons=always --hyperlink always"
+alias ll "eza --group --header --group-directories-first --long --hyperlink always"
+alias lg "eza --group --header --group-directories-first --long --git --git-ignore --hyperlink always"
+alias le "eza --group --header --group-directories-first --long --extended --hyperlink always "
+alias lt "eza --group --header --group-directories-first --tree --level 3 --hyperlink always"
 
 alias ipy ipython
 bind \cs __ethp_commandline_toggle_sudo
 
 alias s "kitten ssh"
+alias icat "kitten icat"
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
