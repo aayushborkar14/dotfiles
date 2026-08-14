@@ -9,6 +9,7 @@ truncation_length = 8
 style = "bold green"
 
 [username]
+style_user = "bold #f0c02e"
 show_always = true
 
 [python]
