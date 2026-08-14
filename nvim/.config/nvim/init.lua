@@ -236,7 +236,19 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 
+-- transparent = true makes lualine's middle section (c) fall through to the
+-- terminal bg; give it a gray instead
+local lualine_theme = vim.deepcopy(require("lualine.themes.carbonfox"))
+for _, mode in pairs(lualine_theme) do
+  if mode.c then
+    mode.c.bg = "#353535"
+  end
+end
+
 require("lualine").setup({
+  options = {
+    theme = lualine_theme,
+  },
   sections = {
     lualine_x = { 'copilot', 'encoding', 'fileformat', 'filetype' },
     lualine_y = {
