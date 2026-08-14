@@ -217,8 +217,7 @@ vim.pack.add({
   "https://github.com/mikavilpas/yazi.nvim",
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/MeanderingProgrammer/render-markdown.nvim",
-  "https://github.com/craftzdog/solarized-osaka.nvim",
-  "flexoki-neovim"
+  "https://github.com/edeneast/nightfox.nvim"
 })
 
 require("plugins.snacks")
@@ -226,8 +225,17 @@ require("plugins.lsp")
 require("tokyonight").setup({
   transparent = true,
 })
+require("nightfox").setup({
+  options = {
+    transparent = true,
+  },
+})
 -- vim.cmd("colorscheme tokyonight-night")
-vim.cmd("colorscheme flexoki-dark")
+vim.cmd("colorscheme carbonfox")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+
 require("lualine").setup({
   sections = {
     lualine_x = { 'copilot', 'encoding', 'fileformat', 'filetype' },
