@@ -4,7 +4,7 @@ vim.pack.add({
 })
 require("competitest").setup({
   template_file = {
-    cpp = "/home/aayush/codeforces/template.cpp",
+    cpp = "~/codeforces/template.cpp",
   },
   compile_command = {
     c = { exec = "gcc", args = { "-Wall", "-g", "$(FNAME)", "-o", "$(FNOEXT)", "-ftrapv" } },
