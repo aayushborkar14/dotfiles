@@ -1,12 +1,12 @@
 STOW     := stow
-PACKAGES := brew fish kitty nvim starship codelldb
+PACKAGES := brew fish kitty nvim starship
 
 .DEFAULT_GOAL := all
 
 CODELLDB_URL := https://github.com/vadimcn/codelldb/releases/latest/download/codelldb-darwin-arm64.vsix
 CODELLDB_DIR := $(HOME)/.local/share/codelldb
 
-all: link
+all: link codelldb
 
 codelldb:
 	@tmp=$$(mktemp -d); \
