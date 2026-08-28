@@ -1,5 +1,5 @@
 STOW     := stow
-PACKAGES := brew fish kitty nvim starship yazi
+PACKAGES := brew fish kitty nvim starship 
 
 .DEFAULT_GOAL := all
 
