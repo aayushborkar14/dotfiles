@@ -1,3 +1,7 @@
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/go/bin
+fish_add_path $HOME/.local/share/codelldb/adapter
+
 zoxide init fish --cmd cd | source
 starship init fish | source
 atuin init fish | source
