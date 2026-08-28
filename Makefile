@@ -1,5 +1,5 @@
 STOW     := stow
-PACKAGES := brew fish kitty nvim starship 
+PACKAGES := brew fish kitty nvim starship codelldb
 
 .DEFAULT_GOAL := all
 
