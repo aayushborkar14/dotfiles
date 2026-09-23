@@ -1,6 +1,6 @@
 # dotfiles
 
-My configuration files for firefox, fish, homebrew, kitty, nvim, starship.
+My configuration files for fish, homebrew, kitty, nvim, starship.
 
 ## Installation
 

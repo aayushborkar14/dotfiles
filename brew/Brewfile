@@ -40,7 +40,7 @@ brew "zoxide"
 # Cask
 cask "bitwarden"
 cask "discord"
-cask "firefox"
+cask "helium"
 cask "karabiner-elements"
 cask "kitty"
 cask "mos"
