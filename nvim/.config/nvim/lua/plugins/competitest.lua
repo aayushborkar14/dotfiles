@@ -8,7 +8,7 @@ require("competitest").setup({
   },
   compile_command = {
     c = { exec = "gcc", args = { "-Wall", "-g", "$(FNAME)", "-o", "$(FNOEXT)", "-ftrapv" } },
-    cpp = { exec = "g++", args = { "-Wall", "-g", "$(FNAME)", "-o", "$(FNOEXT)", "-ftrapv" } },
+    cpp = { exec = "g++", args = { "-Wall", "-g", "$(FNAME)", "-o", "$(FNOEXT)", "-ftrapv", "-std=c++20" } },
     rust = { exec = "rustc", args = { "$(FNAME)" } },
     java = { exec = "javac", args = { "$(FNAME)" } },
   },
