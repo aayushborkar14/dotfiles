@@ -42,7 +42,7 @@ brew "zoxide"
 # Cask
 cask "bitwarden"
 cask "discord"
-cask "helium"
+cask "helium-browser"
 cask "herdr-app"
 cask "karabiner-elements"
 cask "kitty"
