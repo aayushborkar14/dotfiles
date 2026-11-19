@@ -232,35 +232,39 @@ require("nightfox").setup({
 })
 -- vim.cmd("colorscheme tokyonight-night")
 vim.cmd("colorscheme carbonfox")
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+for _, g in ipairs({ "Normal", "NormalFloat", "NormalNC", "TabLineFill", "StatusLine", "StatusLineNC" }) do
+  vim.api.nvim_set_hl(0, g, { bg = "none" })
+end
 
--- transparent = true makes lualine's middle section (c) fall through to the
--- terminal bg; give it a gray instead
 local lualine_theme = vim.deepcopy(require("lualine.themes.carbonfox"))
 for _, mode in pairs(lualine_theme) do
-  if mode.c then
-    mode.c.bg = "#353535"
-  end
+  if mode.a then mode.a.fg, mode.a.gui = mode.a.bg, "bold" end
+  for _, section in pairs(mode) do section.bg = "none" end
 end
 
 require("lualine").setup({
   options = {
     theme = lualine_theme,
+    section_separators = "",
   },
   sections = {
-    lualine_x = { 'copilot', 'encoding', 'fileformat', 'filetype' },
+    lualine_x = {
+      {
+        function() return "recording @" .. vim.fn.reg_recording() end,
+        cond = function() return vim.fn.reg_recording() ~= "" end,
+        color = { fg = "#ee5396", gui = "bold" },
+      },
+      'copilot', 'encoding', 'fileformat', 'filetype',
+    },
     lualine_y = {
       { "progress", separator = " ",                  padding = { left = 1, right = 0 } },
       { "location", padding = { left = 0, right = 1 } },
     },
-    lualine_z = {
-      function()
-        return " " .. os.date("%R")
-      end,
-    },
+    lualine_z = {},
   },
+})
+vim.api.nvim_create_autocmd({ "RecordingEnter", "RecordingLeave" }, {
+  callback = function() vim.schedule(require("lualine").refresh) end,
 })
 require("bufferline").setup({
   options = {
@@ -271,7 +275,10 @@ require("bufferline").setup({
         separator = true,
       },
     },
-  }
+  },
+  highlights = function(defaults)
+    return vim.tbl_map(function() return { bg = "none" } end, defaults.highlights)
+  end,
 })
 require("copilot").setup({
   suggestion = {
